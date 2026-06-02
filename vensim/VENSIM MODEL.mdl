@@ -1,0 +1,415 @@
+{UTF-8}
+Rehab capacity km=Annual Budget GBP / Weighted rehab Unit Cost
+	~	km/Year
+	~		|
+
+Initial acceptable total km=Total network km-Initial backlog km
+	~	km
+	~		~	:SUPPLEMENTARY 
+	|
+
+Acceptable km asphalt= INTEG (Rehab Asphalt-Deterioration asphalt,
+		Initial acceptable km asphalt)
+	~	km
+	~		|
+
+Acceptable KM Laterite= INTEG (Rehab Laterite-Deterioration laterite,
+		Initial acceptable km laterite)
+	~	km
+	~		|
+
+Acceptable KM plastic= INTEG (Rehab Plastic-Deterioration Plastic,
+		Initial acceptable km plastic)
+	~	km
+	~		|
+
+Annual Budget GBP=Budget Factor*Baseline annual budget GBP
+	~	GBP/Year
+	~		~	:SUPPLEMENTARY 
+	|
+
+Annual CO2 Addition t=(Rehab Asphalt*Unit rehab CO2 asphalt)+(Rehab Laterite*Unit rehab CO2 laterite\
+		)+(Rehab Plastic*Unit rehab CO2 plastic)
+	~	t/Year
+	~		|
+
+Annual Cost Addition GBP=(Rehab Asphalt * Unit Rehab Cost asphalt)
+	+ (Rehab Laterite * Unit Rehab Cost laterite)
+	+ (Rehab Plastic * Unit Rehab Cost plastic)
+	~	GBP/Year
+	~		|
+
+Backlog KM= INTEG (Total Deterioration-Total Rehab,
+		Initial backlog km)
+	~	km
+	~		|
+
+Backlog Fraction=Backlog KM/Total network km
+	~	Dmnl
+	~		~	:SUPPLEMENTARY 
+	|
+
+Baseline annual budget GBP=844794
+	~	GBP/Year
+	~		|
+
+Budget Factor=1
+	~	Dmnl
+	~		|
+
+Cumulative CO2 t= INTEG (Annual CO2 Addition t,
+		0)
+	~	t
+	~		~	:SUPPLEMENTARY 
+	|
+
+Cumulative Cost GBP= INTEG (Annual Cost Addition GBP,
+		0)
+	~	GBP
+	~		~	:SUPPLEMENTARY 
+	|
+
+Deterioration laterite=Acceptable KM Laterite / MAX(Effective TTL Laterite, 0.001)
+	~	km/Year
+	~		|
+
+Deterioration Plastic=Acceptable KM plastic / MAX(Effective TTL Plastic, 0.001)
+	~	km/Year
+	~		|
+
+Deterioration asphalt=Acceptable km asphalt / MAX(Effective TTL asphalt, 0.001)
+	~	km/Year
+	~		|
+
+Unit rehab CO2 asphalt=23.5078
+	~	t/km
+	~		|
+
+Unit rehab CO2 laterite=3.82907
+	~	t/km
+	~		|
+
+Unit rehab CO2 plastic=24.771
+	~	t/km
+	~		|
+
+Unit Rehab Cost asphalt=21256.9
+	~	GBP/km
+	~		|
+
+Unit Rehab Cost laterite=11820.8
+	~	GBP/km
+	~		|
+
+Unit Rehab Cost plastic=26067.1
+	~	GBP/km
+	~		|
+
+Weighted rehab Unit Cost=((Rehab share asphalt*Unit Rehab Cost asphalt)+(Rehab share laterite\
+		*Unit Rehab Cost laterite)+Rehab share plastic*Unit Rehab Cost plastic)
+	~	GBP/km
+	~		~	:SUPPLEMENTARY 
+	|
+
+Rehab response time=1
+	~	Year
+	~	Assumed response time for converting backlog demand into a rehabilitation flow.
+	|
+
+Rehab Plastic=min ((Backlog KM*Rehab share plastic)/Rehab response time,Rehab capacity km*Rehab share plastic\
+		)
+	~	km/Year
+	~		|
+
+Total Rehab=Rehab Asphalt+Rehab Laterite+Rehab Plastic
+	~	km/Year
+	~		|
+
+Rehab Asphalt=min((Backlog KM*Rehab share asphalt)/Rehab response time,Rehab capacity km*Rehab share asphalt\
+		)
+	~	km/Year
+	~		|
+
+Total Deterioration=Deterioration laterite+Deterioration Plastic+Deterioration asphalt
+	~	km/Year
+	~		|
+
+Rehab Laterite=min ((Backlog KM*Rehab share laterite)/Rehab response time,Rehab capacity km*Rehab share laterite\
+		)
+	~	km/Year
+	~		|
+
+Total acceptable km=Acceptable km asphalt+Acceptable KM Laterite+Acceptable KM plastic
+	~	km
+	~		|
+
+Initial acceptable km plastic=8.5
+	~	km
+	~		|
+
+Initial acceptable km laterite=17
+	~	km
+	~		|
+
+Initial backlog km=15
+	~	km
+	~		|
+
+Initial acceptable km asphalt=59.5
+	~	km
+	~		|
+
+Acceptable fraction=Total acceptable km / Total network km
+	~	Dmnl
+	~		~	:SUPPLEMENTARY 
+	|
+
+Effective TTL asphalt=TTL asphalt/Overload damage multiplier
+	~	Year
+	~		|
+
+Effective TTL Laterite=TTL laterite/Overload damage multiplier
+	~	Year
+	~		|
+
+Effective TTL Plastic=TTL Plastic/Overload damage multiplier
+	~	Year
+	~		|
+
+Overload damage multiplier=1
+	~	Dmnl
+	~		|
+
+Rehab share asphalt=0.7
+	~	Dmnl
+	~		|
+
+Rehab share laterite=0.2
+	~	Dmnl
+	~		|
+
+Rehab share plastic=0.1
+	~	Dmnl
+	~		|
+
+Total network km=100
+	~	km
+	~		|
+
+TTL asphalt=5
+	~	Year
+	~		|
+
+TTL laterite=3.33333
+	~	Year
+	~		|
+
+TTL Plastic=7
+	~	Year
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 20
+	~	Year
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Year
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Year [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Year [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,55,2
+12,1,48,815,566,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,2,48,1632,561,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,Deterioration laterite,1133,470,51,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,Total acceptable km,1132,671,61,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,5,Total network km,1848,576,64,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,6,Acceptable fraction,1707,666,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,7,4,6,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,8,5,6,1,0,0,0,0,192,0,-1--1--1,,1|(1752,598)|
+10,9,Effective TTL asphalt,923,371,48,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,10,Effective TTL Laterite,1132,370,48,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,11,Effective TTL Plastic,1315,368,48,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,12,TTL laterite,1027,371,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,13,TTL asphalt,808,372,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,14,TTL Plastic,1442,368,39,20,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,15,Overload damage multiplier,1112,265,66,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,16,13,9,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,17,12,10,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,18,14,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,19,15,9,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,20,15,10,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,21,15,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,22,10,3,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,23,Rehab share asphalt,893,764,45,19,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,24,Rehab share laterite,1217,827,49,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,25,Rehab share plastic,1415,827,49,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,26,Rehab capacity km,1106,875,57,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,27,Backlog Fraction,1781,512,61,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,28,Initial acceptable km asphalt,774,632,64,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,29,Initial acceptable km laterite,902,688,64,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,30,Initial acceptable km plastic,1237,636,64,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,31,Initial backlog km,1777,434,65,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,32,Initial acceptable total km,1901,352,64,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,33,Acceptable km asphalt,931,569,55,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,34,33,4,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,35,28,33,0,0,0,0,0,192,1,-1--1--1,,1|(0,0)|
+11,36,0,850,566,6,8,2,3,0,0,1,0,0,0,0,0,0,0,0,0
+1,37,36,1,100,0,0,22,0,192,0,-1--1--1,,1|(834,566)|
+1,38,36,33,4,0,0,22,0,192,1,-1--1--1,,1|(866,566)|
+10,39,Total Deterioration,1466,437,51,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,40,3,39,1,0,0,0,0,192,0,-1--1--1,,1|(1288,430)|
+10,41,Total Rehab,1571,852,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,42,Backlog KM,1528,556,48,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,43,39,42,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,44,31,42,0,0,0,0,0,192,1,-1--1--1,,1|(0,0)|
+1,45,41,42,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,46,Deterioration asphalt,928,478,53,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,47,46,33,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,48,33,46,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,49,9,46,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,50,46,39,1,0,0,0,0,192,0,-1--1--1,,1|(1173,414)|
+1,51,42,27,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,52,5,27,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,53,Cumulative Cost GBP,1347,1205,61,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+11,54,0,1602,561,6,8,2,3,0,0,1,0,0,0,0,0,0,0,0,0
+1,55,54,42,100,0,0,22,0,192,0,-1--1--1,,1|(1586,561)|
+1,56,54,2,4,0,0,22,0,192,0,-1--1--1,,1|(1615,561)|
+10,57,Annual CO2 Addition t,1211,948,46,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,58,Unit rehab CO2 asphalt,924,901,58,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,59,Unit rehab CO2 laterite,905,962,58,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,60,Unit rehab CO2 plastic,936,1020,58,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,61,58,57,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,62,59,57,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,63,60,57,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,64,Unit Rehab Cost asphalt,888,1104,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,65,Unit Rehab Cost laterite,918,1161,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,66,Unit Rehab Cost plastic,891,1217,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,67,Annual Cost Addition GBP,1139,1113,50,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,68,64,67,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,69,65,67,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,70,66,67,1,0,0,0,0,192,0,-1--1--1,,1|(1022,1189)|
+10,71,Baseline annual budget GBP,1459,62,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,72,Annual Budget GBP,1541,174,56,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,73,Budget Factor,1616,59,53,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,74,71,72,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,75,73,72,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,76,Weighted rehab Unit Cost,658,878,60,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,77,23,76,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,78,24,76,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,79,25,76,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,80,64,76,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,81,65,76,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,82,66,76,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,83,Cumulative CO2 t,1398,1084,65,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,84,31,32,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,85,5,32,1,0,0,0,0,192,0,-1--1--1,,1|(1929,486)|
+10,86,Acceptable KM Laterite,1129,564,56,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,87,86,3,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,88,3,86,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,89,86,4,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,90,29,86,0,0,0,0,0,192,1,-1--1--1,,1|(0,0)|
+10,91,Acceptable KM plastic,1318,558,56,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,92,91,4,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+11,93,0,1233,562,6,8,2,3,0,0,1,0,0,0,0,0,0,0,0,0
+1,94,93,33,100,0,0,22,0,192,0,-1--1--1,,1|(1106,562)|
+1,95,93,42,4,0,0,22,0,192,0,-1--1--1,,1|(1359,562)|
+11,96,0,1332,560,6,8,2,3,0,0,1,0,0,0,0,0,0,0,0,0
+1,97,96,86,100,0,0,22,0,192,1,-1--1--1,,1|(1255,560)|
+1,98,96,42,4,0,0,22,0,192,0,-1--1--1,,1|(1409,560)|
+11,99,0,1427,557,6,8,2,3,0,0,1,0,0,0,0,0,0,0,0,0
+1,100,99,91,100,0,0,22,0,192,0,-1--1--1,,1|(1397,557)|
+1,101,99,42,4,0,0,22,0,192,0,-1--1--1,,1|(1456,557)|
+1,102,30,91,0,0,0,0,0,192,1,-1--1--1,,1|(0,0)|
+10,103,Deterioration Plastic,1308,478,51,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,104,11,103,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,105,103,91,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,106,91,103,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,107,103,39,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,108,57,83,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,109,67,53,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,110,Rehab Asphalt,1013,781,55,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,111,23,110,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,112,26,110,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,113,110,33,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,114,110,41,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,115,42,110,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,116,110,57,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,117,110,67,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,118,Rehab Laterite,1199,782,55,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,119,118,41,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,120,118,86,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,121,42,118,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,122,118,67,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,123,24,118,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,124,26,118,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,125,118,57,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+10,126,Rehab Plastic,1386,768,51,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,127,42,126,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,128,126,91,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,129,25,126,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,130,126,57,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,131,126,41,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,132,26,126,1,0,0,0,0,192,0,-1--1--1,,1|(1264,852)|
+1,133,126,67,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,134,72,26,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,135,76,26,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 2
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,100,2
+///---\\\
+:L<%^E!@
+1:current.vdfx
+4:Time
+5:Backlog Fraction
+9:current
+19:55,0
+21:Test
+24:0
+25:20
+26:20
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Vensim Sans|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

@@ -1,0 +1,4 @@
+Material,N_Minor,N_Overlay,N_Recon,First_Overlay_Year,First_Recon_Year,NPV_Cost_GBP,Total_CO2_t
+Asphalt (conventional),3,3,0,10,NaN,99872.4991518897,195.898128
+Laterite (sealed base + reseal),4,4,0,8,NaN,79687.9259877079,44.672496
+Plastic-modified asphalt,2,2,0,12,NaN,110691.652858427,132.1120128
