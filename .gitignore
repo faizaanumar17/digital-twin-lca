@@ -1,0 +1,42 @@
+# MATLAB
+*.asv
+*.m~
+*.mex*
+slprj/
+*.slx.autosave
+
+# Vensim
+*.vdf
+*.vpd
+*.voc
+*.log
+*.lgs
+*.tmp
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+venv/
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Large outputs — store externally or in results/
+*.mat
+*.csv.gz
+
+# Temporary
+*.tmp
+*.temp
+~$*
